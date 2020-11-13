@@ -36,10 +36,11 @@ def hello_world():
 def iot():
     if request.method == 'GET':         # 서버주소/iot로 GET 요청이 들어오면
         pir = request.args.get('pir')   # GET 방식으로 받을 때는 request. 가 아닌 request.args.get 으로 해야 됨
+        echo = request.args.get('echo')
         indate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
         dbconn = pymysql.connect(
-            host = 'rltkwpdntm.mysql.pythonanywhere-services.com', # host : rltkwpdntm.mysql.pythonanywhere-services.com
+            host = 'rltkwpdntm.mysql.pythonanywhere-services.com',
             port = 3306,
             user = 'rltkwpdntm',
             passwd = 'SicParvisMagna',
@@ -47,7 +48,7 @@ def iot():
             charset = 'utf8'
         )
         cursor = dbconn.cursor()
-        sql = "insert into iot set pir = '%s', indate = '%s'; " % (pir, indate)
+        sql = "insert into iot set pir = '%s', echo = '%s', indate = '%s'; " % (pir, echo, indate)
         cursor.execute(sql)
         dbconn.commit()
     return "ok"
