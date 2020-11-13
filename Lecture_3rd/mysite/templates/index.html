@@ -1,0 +1,13 @@
+{% extends "base.html" %}   <!-- base.html에 이 정보를 전달 -->
+{% block content %}
+<img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MTJfNSAg/MDAxNTU3NjM5NzMzNTA3.X9sxuVzElM2twgrD-lZgCHefigWtPnMvU8oD-aiYtGAg.UZCd7HQSkFF9KQv4Anw4VXY6rVsgfg1NlRv1OpKJDeUg.PNG.jung_junseok/dpr1.png?type=w800" />
+<form action="/" method="post" name="frm">
+    <input class="form-control" type="text" name="subject" />
+    <textarea class="form-control" rows="5" name="content"></textarea>
+    <input type="submit" class="btn btn-primary btn-block btn-lg">
+</form>
+{% if subject %}                <!--subject에 값이 존재하면-->
+<h3> Subject : {{subject}}</h3> <!--변수는 {{변수명}} 해야 출력-->
+<h3> Content : {{content}}</h3>
+{% endif %}
+{% endblock %}
